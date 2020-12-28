@@ -1,51 +1,67 @@
-// eslint-disable-next-line no-undef
 module.exports = {
-  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+  parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module', // Allows for the use of imports
+    ecmaVersion: 6,
+    sourceType: 'module',
     ecmaFeatures: {
-      jsx: true, // Allows for the parsing of JSX
-    },
-  },
-  settings: {
-    react: {
-      version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
+      jsx: true,
     },
   },
   extends: [
-    'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
-    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
-
-    // 'eslint:recommended',
-    'plugin:react-hooks/recommended', // React hooks rules
-    'plugin:jsx-a11y/recommended', // Accessibility rules
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'airbnb',
+    'prettier',
   ],
   rules: {
-    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
-    // e.g. "@typescript-eslint/explicit-function-return-type": "off",
-    // We will use TypeScript's types for component props instead
-    'react/prop-types': 'off',
-
-    // No need to import React when using Next.js
-    'react/react-in-jsx-scope': 'off',
-
-    // This rule is not compatible with Next.js's <Link /> components
-    'jsx-a11y/anchor-is-valid': 'off',
-
-    // Why would you want unused vars?
-    '@typescript-eslint/no-unused-vars': ['error'],
-
-    // I suggest this setting for requiring return types on functions only where useful
-    '@typescript-eslint/explicit-function-return-type': [
-      'warn',
+    semi: 1,
+    quotes: [2, 'single'],
+    'import/no-unresolved': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'react/prop-types': 0,
+    'react/jsx-max-props-per-line': 1,
+    'linebreak-style': 0,
+    'import/no-extraneous-dependencies': 0,
+    'class-methods-use-this': 0,
+    'react/jsx-filename-extension': 0,
+    'react/jsx-one-expression-per-line': 0,
+    'react/forbid-prop-types': 0,
+    'react/require-default-props': 0,
+    'no-unused-vars': 1,
+    'import/extensions': 0,
+    'import/order': 1,
+    'react/prefer-stateless-function': 0,
+    'no-use-before-define': 0,
+    'no-param-reassign': 0,
+    'import/no-useless-path-segments': 0,
+    'import/prefer-default-export': 0,
+    'react/jsx-uses-vars': 2,
+    'react/jsx-closing-bracket-location': 1,
+    'react/jsx-first-prop-new-line': 1,
+    'operator-linebreak': 0,
+    // 'no-console': 0,
+    'spaced-comment': 0,
+    'import/no-cycle': 0,
+    'react/no-array-index-key': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+    'jsx-a11y/heading-has-content': 0,
+    'react/jsx-props-no-spreading': 0,
+    'react/jsx-curly-newline': 0,
+    'jsx-a11y/mouse-events-have-key-events': 0,
+    'no-underscore-dangle': 0,
+    camelcase: 0,
+    'prettier/prettier': [
+      'error',
       {
-        allowExpressions: true,
-        allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+        endOfLine: 'auto',
       },
     ],
-    '@typescript-eslint/no-explicit-any': 'off',
+  },
+  plugins: ['prettier'],
+  env: {
+    es6: true,
+    browser: true,
+    node: true,
   },
 };
