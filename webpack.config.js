@@ -3,19 +3,26 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const src = path.resolve(__dirname, 'src');
 const VENDOR_LIBS = [
-  'react',
-  'react-dom',
+  '@reduxjs/toolkit',
+  'axios',
   'bootstrap',
+  'classnames',
   // 'font-awesome',
+  'formik',
   'jquery',
   'popper.js',
-  'redux',
-  'redux-saga',
-  'react-router-dom',
-  'axios',
-  'react-redux',
   'query-string',
+  'react',
+  'react-dom',
+  'react-redux',
+  'react-router-dom',
+  'react-select',
+  'reactstrap',
+  'redux-saga',
+  'sweetalert',
+  'yup',
 ];
 
 module.exports = {
@@ -28,6 +35,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js',
   },
+  devtool: 'inline-source-map',
   devServer: {
     open: true,
     disableHostCheck: true,
@@ -80,4 +88,28 @@ module.exports = {
       filename: '[name].css',
     }),
   ],
+  resolve: {
+    alias: {
+      actions: path.resolve(__dirname, 'src/actions/'),
+      api: path.resolve(__dirname, 'src/api/'),
+      assets: path.resolve(__dirname, 'src/redux/'),
+      components: path.resolve(__dirname, 'src/components/'),
+      configs: path.resolve(__dirname, 'src/configs/'),
+      constants: path.resolve(__dirname, 'src/constants/'),
+      CustomFields: path.resolve(__dirname, 'src/custom-fields/'),
+      helpers: path.resolve(__dirname, 'src/helpers/'),
+      hocs: path.resolve(__dirname, 'src/hocs/'),
+      hooks: path.resolve(__dirname, 'src/hooks/'),
+      layout: path.resolve(__dirname, 'src/layout/'),
+      pages: path.resolve(__dirname, 'src/pages/'),
+      reducers: path.resolve(__dirname, 'src/reducers/'),
+      redux: path.resolve(__dirname, 'src/redux/'),
+      routes: path.resolve(__dirname, 'src/routes/'),
+      sagas: path.resolve(__dirname, 'src/sagas/'),
+      slices: path.resolve(__dirname, 'src/slices/'),
+    },
+    modules: [path.resolve(__dirname, './src'), 'node_modules'],
+    extensions: ['.js', '.json', '.css', '.scss', '.jsx'],
+    preferRelative: true,
+  },
 };

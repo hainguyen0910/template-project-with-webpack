@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', 'Segoe UI', sans-serif;
+  font-size: $fs-1;
+  color: $black-color-1;
+  background-color: $white-color;
+  line-height: $line-height-0;
+}

@@ -1,14 +1,15 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from 'Redux/store';
 import './style.scss';
 
 function App() {
   return (
-    <div className="test">
-      This is template project
-      <div className="btn btn-primary">
-        alo
+    <Provider store={store}>
+      <div className="test">
+        Admin page
       </div>
-    </div>
+    </Provider>
   )
 }
 

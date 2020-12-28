@@ -1,0 +1,55 @@
+$primary-color: #409eff;
+$secondary-color: #999a9c;
+$success-color: #58a638;
+$danger-color: #ff4f4f;
+$warning-color: #ffb400;
+
+$khaki-yellow-color: #f5e35d;
+$golden-yellow-color: #f3db3b;
+
+$dark-gray-color: #999a9c;
+$lightSlate-gray-color: #54565a;
+
+$white-color: #fff;
+$white-color-1: rgb(236, 234, 234);
+$black-color: #000;
+$black-color-1: #3a4042;
+$black-color-2: #292b2c;
+$blue-color: #337ab7;
+$blue-color-1: #003953;
+$green-color: #a7e688;
+
+$fs-0: 13px;
+$fs-1: 15px;
+$fs-2: 18px;
+$fs-3: 24px;
+$fs-4: 40px;
+$mg-0: 2px;
+$mg-1: 10px;
+$mg-2: 25px;
+$border-radius: 5px;
+$pd-0: 0.5rem;
+$pd-1: 1rem;
+$pd-2: 1.5rem;
+$pd-3: 2rem;
+$line-height-0: 1.43;
+$sd-0: 5px;
+$sd-1: 10px;
+$sd-2: 15px;
+$fw-bold: bold;
+$fw-bold-0: 400;
+$fw-bold-1: 500;
+$fw-bold-2: 600;
+$fw-bold-3: 700;
+$fw-normal: normal;
+
+$time-in: 1s;
+$time-out: 1s;
+
+//breakpoint
+$breakpoints: (
+  'extra-large': 1200px,
+  'large': 992px,
+  'medium': 768px,
+  'small': 576px,
+);
