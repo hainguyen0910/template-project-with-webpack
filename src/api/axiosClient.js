@@ -1,8 +1,9 @@
 import axios from 'axios';
 import queryString from 'query-string';
 
+const baseURL = 'http://localhost:8080/api';
 const axiosClient = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL,
   headers: {
     'content-type': 'application/json',
   },
@@ -16,11 +17,9 @@ axiosClient.interceptors.request.use(async (config) => {
 });
 
 axios.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    return new Promise((resolve) => {
+  (response) => response,
+  (error) =>
+    new Promise((resolve) => {
       const originalRequest = error.config;
       const refreshToken = localStorage.getItem('refreshToken');
       if (
@@ -32,7 +31,7 @@ axios.interceptors.response.use(
       ) {
         originalRequest._retry = true;
 
-        const response = fetch(api.refreshToken, {
+        const response = fetch(`${baseURL}/auth/refresh-token`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -51,8 +50,7 @@ axios.interceptors.response.use(
       }
 
       return Promise.reject(error);
-    });
-  },
+    }),
 );
 
 export default axiosClient;

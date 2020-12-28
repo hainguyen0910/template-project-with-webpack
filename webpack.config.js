@@ -1,9 +1,12 @@
+require('dotenv').config();
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
-const src = path.resolve(__dirname, 'src');
+const port = process.env.PORT || 3000;
+
 const VENDOR_LIBS = [
   '@reduxjs/toolkit',
   'axios',
@@ -12,7 +15,6 @@ const VENDOR_LIBS = [
   // 'font-awesome',
   'formik',
   'jquery',
-  'popper.js',
   'query-string',
   'react',
   'react-dom',
@@ -28,7 +30,7 @@ const VENDOR_LIBS = [
 module.exports = {
   mode: 'development',
   entry: {
-    bundle: './index.js',
+    bundle: './src/index.js',
     vendor: VENDOR_LIBS,
   },
   output: {
@@ -45,6 +47,7 @@ module.exports = {
     inline: true,
     compress: true,
     contentBase: '/',
+    port,
   },
   module: {
     rules: [
@@ -68,10 +71,13 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.eot$|\.ttf$|\.wav$|\.mp3$|\.ico$/i,
+        test: /\.(jpe?g|gif|png|svg|woff|woff2|eot|ttf|wav|mp3|ico)$/i,
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]',
+          // name: '[path][name].[ext]',
+          name(resourcePath) {
+            return resourcePath.replace(path.resolve(__dirname, 'src'), '');
+          },
         },
       },
     ],
@@ -87,12 +93,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
+    new Dotenv({
+      path: './.env', // Path to .env file (this is the default)
+    }),
   ],
   resolve: {
     alias: {
       Actions: path.resolve(__dirname, 'src/actions/'),
       Api: path.resolve(__dirname, 'src/api/'),
-      Assets: path.resolve(__dirname, 'src/redux/'),
+      Assets: path.resolve(__dirname, 'src/assets/'),
       Components: path.resolve(__dirname, 'src/components/'),
       Configs: path.resolve(__dirname, 'src/configs/'),
       Constants: path.resolve(__dirname, 'src/constants/'),
@@ -109,7 +118,7 @@ module.exports = {
       Slices: path.resolve(__dirname, 'src/slices/'),
     },
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
-    extensions: ['.js', '.json', '.css', '.scss', '.jsx'],
+    extensions: ['.js', '.css', '.scss', '.jsx'],
     preferRelative: true,
   },
 };

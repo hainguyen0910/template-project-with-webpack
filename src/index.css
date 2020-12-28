@@ -1,0 +1,9 @@
+header {
+  color: red;
+  padding: 12px;
+}
+
+div {
+  display: inline;
+  border: 1px solid #ccc;
+}

@@ -1,13 +1,13 @@
 @mixin respond-to($breakpoint) {
-    @if map-has-key($map: $breakpoints, $key: $breakpoint) {
-        $value: map-get(
-            $map: $breakpoints,
-            $key: $breakpoint,
-        );
-        @media only screen and (max-width: $value) {
-            @content;
-        }
-    } @else {
-        @warn "Khong ton tai trong $breakpoints";
+  @if map-has-key($map: $breakpoints, $key: $breakpoint) {
+    $value: map-get(
+      $map: $breakpoints,
+      $key: $breakpoint,
+    );
+    @media only screen and (max-width: $value) {
+      @content;
     }
+  } @else {
+    @warn "Khong ton tai trong $breakpoints";
+  }
 }
